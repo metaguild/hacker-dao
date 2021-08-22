@@ -1,6 +1,6 @@
 set -e
 MASTER_ACC=agency.near
-CONTRACT_ACC=hacker.$MASTER_ACC
+CONTRACT_ACC=hackathon.$MASTER_ACC
 
 export NODE_ENV=mainnet
 export POLICY='{
@@ -58,8 +58,8 @@ export POLICY='{
     "weight_kind": "RoleWeight",
     "quorum": "0",
     "threshold": [
-      1,
-      2
+        1,
+        2
     ]
   },
   "proposal_bond": "10000000000000000000000",
@@ -69,7 +69,7 @@ export POLICY='{
 }'
 
 near create-account $CONTRACT_ACC --masterAccount $MASTER_ACC --initialBalance 20
-near deploy --wasmFile=res/sputnikdao2.wasm --initFunction "new" --initArgs "{\"config\": {\"name\": \"hack\", \"purpose\": \"Hackathon DAO\", \"metadata\":\"\"}, \"policy\": $POLICY" --accountId $CONTRACT_ACC
+near deploy --wasmFile=res/sputnikdao2.wasm --initFunction "new" --initArgs '{"config": {"name": "hackathon", "purpose": "Hackathon DAO", "metadata":""}, "policy": $POLICY}' --accountId $CONTRACT_ACC
 near view $CONTRACT_ACC get_policy
 echo "DAO succesfully deployed!"
 
