@@ -1,6 +1,6 @@
 set -e
 MASTER_ACC=agency.near
-CONTRACT_ACC=hack.$MASTER_ACC
+CONTRACT_ACC=hacker.$MASTER_ACC
 
 export NODE_ENV=mainnet
 export POLICY='{
@@ -13,14 +13,14 @@ export POLICY='{
     },
     {
       "name": "council",
-      "kind": { "Group": ["hack.near", "agency.near", "metabuild.near"]
+      "kind": { "Group": ["hack.near", "agency.near", "tjtc.near", "metabuild.near"]
       },
       "permissions": [ "*:*" ],
       "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": "1" }
     },
     {
       "name": "hacker",
-      "kind": { "Group": ["create.near, "devs.near"]
+      "kind": { "Group": ["tjtc.near", "create.near, "devs.near"]
       },
       "permissions": [ "*:*" ],
       "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": [ 1,2 ] }
