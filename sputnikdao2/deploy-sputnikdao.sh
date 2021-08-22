@@ -16,7 +16,7 @@ export POLICY='{
       "kind": { "Group": ["hack.near", "agency.near", "metabuild.near"]
       },
       "permissions": [ "*:*" ],
-      "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": [ 1,8 ] }
+      "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": "1" }
     },
     {
       "name": "hacker",
