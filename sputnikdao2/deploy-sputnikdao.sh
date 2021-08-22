@@ -8,25 +8,60 @@ export POLICY='{
     {
       "name": "all",
       "kind": "Everyone",
-      "permissions": [ "*:AddProposal" ],
+      "permissions": [
+        "*:AddProposal"
+      ],
       "vote_policy": {}
     },
     {
       "name": "council",
-      "kind": { "Group": ["hack.near", "agency.near", "tjtc.near", "metabuild.near"]
+      "kind": {
+        "Group": [
+          "hack.near",
+          "agency.near",
+          "tjtc.near",
+          "metabuild.near"
+        ]
       },
-      "permissions": [ "*:*" ],
-      "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": "1" }
+      "permissions": [
+        "*:*"
+      ],
+      "vote_policy": {
+        "weight_kind": "RoleWeight",
+        "quorum": "0",
+        "threshold": "1"
+      }
     },
     {
       "name": "hacker",
-      "kind": { "Group": ["tjtc.near", "create.near, "devs.near"]
+      "kind": {
+        "Group": [
+          "tjtc.near",
+          "create.near",
+          "devs.near"
+        ]
       },
-      "permissions": [ "*:*" ],
-      "vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": [ 1,2 ] }
+      "permissions": [
+        "*:*"
+      ],
+      "vote_policy": {
+        "weight_kind": "RoleWeight",
+        "quorum": "0",
+        "threshold": [
+          1,
+          2
+        ]
+      }
     }
   ],
-  "default_vote_policy": { "weight_kind": "RoleWeight", "quorum": "0", "threshold": [ 1,2 ] },
+  "default_vote_policy": {
+    "weight_kind": "RoleWeight",
+    "quorum": "0",
+    "threshold": [
+      1,
+      2
+    ]
+  },
   "proposal_bond": "10000000000000000000000",
   "proposal_period": "604800000000000",
   "bounty_bond": "1000000000000000000000000",
