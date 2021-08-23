@@ -1,7 +1,12 @@
+#!/bin/bash
 set -e
 
-export NODE_ENV=mainnet
-export POLICY='{
+REPL=$(cat <<-END
+const accountId = "agency.near";
+const contractName = "hack.sputnik-dao.near";
+const account = await near.account(accountId);
+const args = {"proposal": {"description": "Change Policy", "kind": {"ChangePolicy": {
+  "policy": {
   "roles": [
     {
       "name": "all",
@@ -64,19 +69,13 @@ export POLICY='{
   "proposal_period": "604800000000000",
   "bounty_bond": "1000000000000000000000000",
   "bounty_forgiveness_period": "86400000000000"
-}'
+}}}}};
 
-export ARGS=`echo '{"config": {"name": "hack", "purpose": "Hack DAO", "metadata":""}, "policy": "'$POLICY'"}' | base64`
-near call sputnik-dao.near create '{"name": "hack", "args": "'$ARGS'"}' --accountId agency.near --amount 5 --gas 150000000000000
+account.signAndSendTransaction(
+    contractName,
+    [
+        nearAPI.transactions.functionCall("add_proposal", args, 20000000000000, "10000000000000000000000000"),
+    ]);
+END)
 
-#near create-account $CONTRACT_ACC --masterAccount $MASTER_ACC --initialBalance 20
-#near deploy --wasmFile=res/sputnikdao2.wasm --initFunction "new" --initArgs '{"config": {"name": "metabuild", "purpose": "Hackathon DAO", "metadata":""}, "policy": '$POLICY'}' --accountId $CONTRACT_ACC
-#near view $CONTRACT_ACC get_policy
-#echo "DAO succesfully deployed!"
-
-##redeploy only
-#near deploy $CONTRACT_ACC --wasmFile=res/sputnikdao2.wasm  --accountId $MASTER_ACC
-
-#save last deployment 
-#cp ./res/sputnikdao2.wasm ./res/sputnikdao2.`date +%F.%T`.wasm
-#date +%F.%T
+echo $REPL | near repl
