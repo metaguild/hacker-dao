@@ -26,8 +26,8 @@ export POLICY='{
       ],
       "vote_policy": {
         "weight_kind": "RoleWeight",
-        "quorum": "0",
-        "threshold": "1"
+        "quorum": 0,
+        "threshold": (1,8)
       }
     },
     {
@@ -42,23 +42,13 @@ export POLICY='{
       "permissions": [
         "*:*"
       ],
-      "vote_policy": {
-        "weight_kind": "RoleWeight",
-        "quorum": "0",
-        "threshold": [
-          1,
-          2
-        ]
-      }
+      "vote_policy": {}
     }
   ],
   "default_vote_policy": {
     "weight_kind": "RoleWeight",
-    "quorum": "0",
-    "threshold": [
-        1,
-        2
-    ]
+    "quorum": 0,
+    "threshold": (1,2)
   },
   "proposal_bond": "10000000000000000000000",
   "proposal_period": "604800000000000",
