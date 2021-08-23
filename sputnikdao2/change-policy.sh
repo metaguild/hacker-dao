@@ -31,7 +31,7 @@ const args = {"proposal": {"description": "Change Policy", "kind": {"ChangePolic
       ],
       "vote_policy": {
         "weight_kind": "RoleWeight",
-        "quorum": "0",
+        "quorum": 0,
         "threshold": [1,8]
       }
     },
@@ -52,7 +52,7 @@ const args = {"proposal": {"description": "Change Policy", "kind": {"ChangePolic
   ],
   "default_vote_policy": {
     "weight_kind": "RoleWeight",
-    "quorum": "0",
+    "quorum": 0,
     "threshold": [1,2]
   },
   "proposal_bond": "10000000000000000000000",
